@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="shortcut icon"
+        href="https://res.cloudinary.com/ankitcloudinary/image/upload/v1652424640/Movie%20App/you_1_h0r3t6.webp"
+        type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="home-container">
+
+        <%- include("partials/sidebar") %>
+
+            <div class="main-content">
+                <i onclick="showSidebar()" id="menu-bar" class="fa-solid fa-bars"></i>
+
+                <div class="search-content-wrapper">
+                    <div class="search-content-blurry-back">
+                        <% if(error !="" ){ %>
+                            <div class="message-box error-msg">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                                <%= error %>
+                            </div>
+                            <% }else if(success !="" ){ %>
+                                <div class="message-box success-msg">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <%= success %>
+                                </div>
+                                <% } %>
+
+                                    <div class="search-content-container">
+                                        <h1>Go Searching</h1>
+                                        <div class="search-tagline">One stop destination for all your movie searches.
+                                            Enter your
+                                            query
+                                            and
+                                            we will suggest you some
+                                            of
+                                            the best movies related to your query.</div>
+                                        <form class="search-form" action="/search" method="get">
+                                            <input type="text" name="query" placeholder="enter your query">
+                                            <button>Search</button>
+                                        </form>
+                                    </div>
+                                    <% if(movies.length !=0){ %>
+                                        <a href="#movies-section" class="scroll-down-btn">Scroll Down to check the
+                                            results <i class="fa-solid fa-chevrons-down"></i></a>
+                                        <% } %>
+
+                    </div>
+                </div>
+
+                <!-- movies -->
+                <% if(movies.length !=0){ %>
+                    <div id="movies-section" class="all-movies-content-wrapper">
+                        <div class="movie-container">
+                            <h1>Query Results</h1>
+                            <% if(!currUser){ %>
+                                <div class="login-msg-playlist"><em>( Login to be able to add these movies to your
+                                        playlist. )</em></div>
+                                <% } %>
+                                    <div class="all-movies-wrapper">
+
+                                        <!-- each movie card -->
+                                        <% for(let i=0; i < movies.length; i++){ %>
+                                            <div class="each-movie">
+
+                                                <!-- image -->
+                                                <img src="<%= movies[i].Poster %>" alt="">
+
+                                                <!-- movie info -->
+                                                <div class="each-movie-detail">
+                                                    <h3 class="each-movie-title">
+                                                        <%= movies[i].Title %>
+                                                    </h3>
+                                                    <div class="each-movie-year">Year of Release - <%= movies[i].Year %>
+                                                    </div>
+                                                    <div class="each-movie-type">Type - <%= movies[i].Type %>
+                                                    </div>
+                                                </div>
+
+                                                <!-- add to playlist button -->
+                                                <% if(currUser) {%>
+                                                    <button type="button" data-toggle="modal"
+                                                        data-target="#pop-up-<%= i %>" class="bttn bttn-add">Add To
+                                                        Playlist</button>
+
+
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade pop-up-modal<%= i %>" id="pop-up-<%= i %>"
+                                                        tabindex="-1" role="dialog"
+                                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="exampleModalLongTitle-<%- i %>">
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+
+
+                                                                <!-- modal body -->
+                                                                <div class="modal-body">
+                                                                    <% if(currUser && currUser.playlists.length !=0){ %>
+                                                                        <form
+                                                                            action="/<%= currUser._id %>/add-to-playlist"
+                                                                            method="post">
+                                                                            <h4 class="pop-up-h4">Add to your current
+                                                                                playlists</h4>
+                                                                            <% for(let j=0; j <
+                                                                                currUser.playlists.length; j++) { %>
+                                                                                <div class="form-check">
+                                                                                    <input class="form-check-input"
+                                                                                        type="radio" name="playlist"
+                                                                                        value="<%= currUser.playlists[j]._id %>"
+                                                                                        id="playlist-radio-<%= i %>-<%= j %>"
+                                                                                        checked>
+                                                                                    <label class="form-check-label"
+                                                                                        for="playlist-radio-<%= i %>-<%= j %>">
+                                                                                        <%= currUser.playlists[j].name
+                                                                                            %>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <% } %>
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="movietitle-<%- i %>">Movie
+                                                                                            Title</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="movietitle-<%- i %>"
+                                                                                            placeholder="Movie Title"
+                                                                                            name="title"
+                                                                                            value="<%= movies[i].Title %>">
+                                                                                    </div>
+                                                                                    <button
+                                                                                        class="bttn bttn-addCurPlaylist">Add</button>
+                                                                        </form>
+                                                                        <% } %>
+
+                                                                            <div class="create-new-playlist-section">
+                                                                                <h4 class="pop-up-h4">Wanna create a new
+                                                                                    playlist?
+                                                                                </h4>
+                                                                                <button
+                                                                                    class="bttn-createNewPlaylist createNewPlaylist-<%= i %>"
+                                                                                    onclick="showCreatePlaylistForm(<%= i %>)">Create</button>
+                                                                                <button
+                                                                                    class="bttn-hideNewPlaylist  hideNewPlaylist-<%= i %>"
+                                                                                    onclick="hideCreatePlaylistForm(<%= i %>)">Cancel</button>
+
+                                                                                <form
+                                                                                    id="create-new-playlist-form-<%- i %>"
+                                                                                    class="create-new-playlist-form-hide"
+                                                                                    action="/<%= currUser._id %>/create-playlist"
+                                                                                    method="post">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="playlistname-<%- i %>">Playlist
+                                                                                            Name</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="playlistname-<%- i %>"
+                                                                                            placeholder="Playlist Name"
+                                                                                            name="playlist">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="privacystatus-<%- i %>">Privacy
+                                                                                            Status</label>
+                                                                                        <select class="form-control"
+                                                                                            id="privacystatus-<%- i %>"
+                                                                                            name="status">
+                                                                                            <option value="private">
+                                                                                                Private
+                                                                                            </option>
+                                                                                            <option value="public">
+                                                                                                Public
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="movietitle-<%- i %>">Movie
+                                                                                            Title</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="movietitle-<%- i %>"
+                                                                                            placeholder="Movie Title"
+                                                                                            name="title"
+                                                                                            value="<%= movies[i].Title %>">
+                                                                                    </div>
+                                                                                    <button
+                                                                                        class="bttn bttn-addCurPlaylist">Submit</button>
+                                                                                </form>
+                                                                            </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <% } %>
+                                            </div>
+                                            <% } %>
+
+                                    </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+    </div>
+
+    <script src="js/home.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

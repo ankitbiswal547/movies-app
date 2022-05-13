@@ -1,0 +1,302 @@
+/* Login page css starts */
+
+
+.login-content-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-image: url("https://res.cloudinary.com/ankitcloudinary/image/upload/v1652382909/Movie%20App/97800-joker-poster-wallpaper-top-free-joker-poster-background_vkmtwg.webp");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.login-content-blurry-back {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.login-content-container {
+    width: 50%;
+    margin: auto;
+    background: #000000d9;
+    padding: 3em 2em;
+    border-radius: 3px;
+}
+
+.login-content-container h1 {
+    background: -webkit-linear-gradient(45deg, #c73461, #f83730, #fc924c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    font-size: 3em;
+}
+
+.login-tagline {
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+    color: #6C6C6C;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 0.5em;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.login-form input {
+    display: block;
+    height: 40px;
+    width: 100%;
+    background: #6C6C6C;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 0 1em;
+    color: white;
+    letter-spacing: 0.04em;
+    margin-bottom: 1em;
+}
+
+.login-form input::placeholder {
+    color: white;
+    text-transform: capitalize;
+}
+
+.login-form input:focus {
+    outline: none;
+}
+
+.login-form button {
+    height: 40px;
+    padding: 0 1em;
+    font-size: 1.1em;
+    border: none;
+    background: rgb(199, 52, 97);
+    background: -moz-linear-gradient(45deg, rgba(199, 52, 97, 1) 25%, rgba(248, 55, 48, 1) 74%, rgba(252, 146, 76, 1) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(199, 52, 97, 1) 25%, rgba(248, 55, 48, 1) 74%, rgba(252, 146, 76, 1) 100%);
+    background: linear-gradient(45deg, rgba(199, 52, 97, 1) 25%, rgba(248, 55, 48, 1) 74%, rgba(252, 146, 76, 1) 100%);
+    color: white;
+    border-radius: 3px;
+    /* width: 25%; */
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+/* Login page css ends */
+
+
+
+/* signup page css starts */
+
+
+.signup-content-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-image: url("https://res.cloudinary.com/ankitcloudinary/image/upload/v1652382906/Movie%20App/53492-interstellar-movie-poster-widescreen-wallpaper-49235-2880x1800px_kjau32.webp");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.signup-content-blurry-back {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.signup-content-container {
+    width: 50%;
+    margin: auto;
+    background: #000000d9;
+    padding: 3em 2em;
+    border-radius: 3px;
+}
+
+.signup-content-container h1 {
+    background: -webkit-linear-gradient(45deg, #c73461, #f83730, #fc924c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    font-size: 3em;
+}
+
+.signup-tagline {
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+    color: #6C6C6C;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 0.5em;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.signup-form input {
+    display: block;
+    height: 40px;
+    width: 100%;
+    background: #6C6C6C;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 0 1em;
+    color: white;
+    letter-spacing: 0.04em;
+    margin-bottom: 1em;
+}
+
+.signup-form input::placeholder {
+    color: white;
+    text-transform: capitalize;
+}
+
+.signup-form input:focus {
+    outline: none;
+}
+
+.signup-form button {
+    height: 40px;
+    padding: 0 1em;
+    font-size: 1.1em;
+    border: none;
+    background: rgb(199, 52, 97);
+    background: -moz-linear-gradient(45deg, rgba(199, 52, 97, 1) 25%, rgba(248, 55, 48, 1) 74%, rgba(252, 146, 76, 1) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(199, 52, 97, 1) 25%, rgba(248, 55, 48, 1) 74%, rgba(252, 146, 76, 1) 100%);
+    background: linear-gradient(45deg, rgba(199, 52, 97, 1) 25%, rgba(248, 55, 48, 1) 74%, rgba(252, 146, 76, 1) 100%);
+    color: white;
+    border-radius: 3px;
+    /* width: 25%; */
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+
+/* signup page css ends */
+
+
+/* responsiveness */
+
+
+@media(max-width:1024px) {
+
+    .login-content-container,
+    .signup-content-container {
+        width: 60%;
+        word-break: break-word;
+    }
+
+    .login-form,
+    .signup-form {
+        width: 60%;
+        flex-direction: column;
+    }
+}
+
+@media(max-width:769px) {
+
+    .login-content-container,
+    .signup-content-container {
+        width: 70%;
+        word-break: break-word;
+    }
+
+    .login-form,
+    .signup-form {
+        width: 70%;
+        flex-direction: column;
+    }
+}
+
+@media(max-width:426px) {
+
+    .login-content-wrapper,
+    .signup-content-wrapper {
+        background-image: url("https://res.cloudinary.com/ankitcloudinary/image/upload/v1652382894/Movie%20App/75789-free-download-horror-collage-wallpaper-horror-movies-wallpaper_ymgymk.webp");
+    }
+
+    .login-content-container,
+    .signup-content-container {
+        width: 90%;
+        word-break: break-word;
+    }
+
+    .login-content-container h1,
+    .signup-content-container h1 {
+        font-size: 2.1em;
+    }
+
+    .login-tagline,
+    .signup-tagline {
+        font-size: 1em;
+    }
+
+    .login-form,
+    .signup-form {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .login-form input,
+    .signup-form input {
+        width: 100%;
+        margin-bottom: 1em;
+        text-align: center;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .login-form button,
+    .signup-form button {
+        width: 100%;
+    }
+}

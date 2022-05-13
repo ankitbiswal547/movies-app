@@ -1,0 +1,55 @@
+<div id="side-bar" class="playlist-bar hide-side-bar">
+    <i class="fa-solid fa-xmark" onclick="closeSidebar()"></i>
+
+    <div class="sidebar-attributes-wrapper">
+        <a href="/" class="sidebar-attributes">
+            <i class="fa-solid fa-house"></i> Home
+        </a>
+
+        <a href="#" class="sidebar-attributes">
+            <i class="fa-solid fa-users"></i> All Users
+        </a>
+        <% if(!currUser) { %>
+            <a href="/login" class="sidebar-attributes">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+            </a>
+            <a href="/signup" class="sidebar-attributes">
+                <i class="fa-solid fa-user-plus"></i> Signup
+            </a>
+            <% }else { %>
+                <a href="#" class="sidebar-attributes">
+                    <i class="fa-solid fa-user"></i>
+                    <%= currUser.fullname %>'s Account
+                </a>
+                <a href="/logout" class="sidebar-attributes">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                </a>
+                <% } %>
+    </div>
+
+    <% if(currUser){ %>
+        <h2 class="playlist-heading">
+            Active Playlists
+        </h2>
+        <% if(currUser.playlists.length !=0){ %>
+            <div>
+                <% for(let i=0; i < currUser.playlists.length; i++){ %>
+                    <div>
+                        <div onclick="myPlaylist(<%= i %>)" class="playlist-title" id="title-<%= i %>">
+                            <%= currUser.playlists[i].name%>
+                        </div>
+                        <div id="playlist-item-<%= i %>" class="playlist-items">
+                            <% for(let j=0; j < currUser.playlists[i].movies.length; j++){ %>
+                                <div>
+                                    <%= currUser.playlists[i].movies[j].movieTitle %>
+                                </div>
+                                <% } %>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+            <% }else{ %>
+                <div class="login-msg-playlist"><em>( No active playlist. )</em></div>
+                <% } %>
+                    <% } %>
+</div>
