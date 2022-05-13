@@ -238,7 +238,7 @@ html {
     word-break: break-word;
     border: 0;
     position: absolute;
-    bottom: 7%;
+    top: 11%;
     transition: all 0.1s linear;
 }
 
