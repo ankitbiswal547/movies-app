@@ -533,6 +533,10 @@ h3.each-movie-title {
     width: 65%;
 }
 
+.private-public-wrapper {
+    margin-bottom: 1em;
+}
+
 .private-public-heading {
     background: -webkit-linear-gradient(45deg, #c73461, #f83730, #fc924c);
     -webkit-background-clip: text;
@@ -625,6 +629,14 @@ h3.each-movie-title {
 
     .all-movies-content-wrapper {
         padding: 2em 0;
+    }
+
+    .user-page-wrapper {
+        justify-content: center !important;
+    }
+
+    .user-page-right-side {
+        width: 95%;
     }
 }
 

@@ -38,10 +38,10 @@
                         <h1>
                             <%= user.fullname %>'s Profile
                         </h1>
-                        <div class="all-movies-wrapper">
+                        <div class="all-movies-wrapper user-page-wrapper">
 
                             <!-- each movie card -->
-                            <div class="each-movie">
+                            <div class="each-movie user-card">
 
                                 <!-- image -->
                                 <img src="<%= user.image %>" alt="">
@@ -58,18 +58,19 @@
 
                                 <!-- private playlist -->
                                 <% if(currUser && currUser.username==user.username){ %>
-                                    <div>
+                                    <div class="private-public-wrapper">
                                         <h4 class="private-public-heading">Private Playlist</h4>
                                         <% if(user.playlists.length !=0){ %>
                                             <div>
                                                 <% for(let i=0; i < user.playlists.length; i++){ %>
                                                     <% if(user.playlists[i].status==="private" ){ %>
                                                         <div>
-                                                            <div onclick="myPlaylist(<%= i %>)" class="playlist-title"
-                                                                id="title-<%= i %>">
+                                                            <div onclick="myPlaylistUser(<%= i %>)"
+                                                                class="playlist-title" id="title-<%= i %>-<%= i %>">
                                                                 <%= user.playlists[i].name%>
                                                             </div>
-                                                            <div id="playlist-item-<%= i %>" class="playlist-items">
+                                                            <div id="playlist-item-<%= i %>-<%= i %>"
+                                                                class="playlist-items">
                                                                 <% for(let j=0; j < user.playlists[i].movies.length;
                                                                     j++){ %>
                                                                     <div>
@@ -88,7 +89,7 @@
                                     <% } %>
 
 
-                                        <div>
+                                        <div class="private-public-wrapper">
                                             <h4 class="private-public-heading">Public Playlist</h4>
                                             <% if(user.playlists.length !=0){ %>
                                                 <div>
