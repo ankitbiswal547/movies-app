@@ -17,19 +17,16 @@ html {
 /* Track */
 ::-webkit-scrollbar-track {
     background: rgb(179, 177, 177);
-    /* border-radius: 1px; */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgb(136, 136, 136);
-    /* border-radius: 1px; */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(100, 100, 100);
-    /* border-radius: 1px; */
 }
 
 .home-container {
@@ -134,7 +131,6 @@ html {
 .fa-house {
     width: 35px;
     height: 35px;
-    /* background: black; */
     color: white;
     border-radius: 50%;
     margin-right: 1em;
@@ -187,10 +183,6 @@ html {
     width: 100%;
     min-height: 100vh;
     position: relative;
-    /* background-image: url("./assets/blob-scene-haikei.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */
 }
 
 .fa-bars {
@@ -246,7 +238,7 @@ html {
     word-break: break-word;
     border: 0;
     position: absolute;
-    bottom: 4%;
+    bottom: 7%;
     transition: all 0.1s linear;
 }
 
@@ -268,33 +260,6 @@ html {
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    /* background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(5.5px);
-    -webkit-backdrop-filter: blur(5.5px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18); */
-
-    /* background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(2.5px);
-    -webkit-backdrop-filter: blur(2.5px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18); */
-
-    /* background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18); */
-
-    /* background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18); */
 
     background: rgba(0, 0, 0, 0.3);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -491,7 +456,6 @@ h3.each-movie-title {
 }
 
 .bttn-addCurPlaylist {
-    /* width: auto !important; */
     min-width: 100px;
     max-width: 100px;
     padding: 0.4em 1em;
@@ -519,10 +483,6 @@ h3.each-movie-title {
     letter-spacing: 0.04em;
 }
 
-/* 
-.bttn-hideNewPlaylist {
-    display: none;
-} */
 
 .create-new-playlist-section {
     margin-top: 0.5em;
