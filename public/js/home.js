@@ -31,3 +31,10 @@ const hideCreatePlaylistForm = (ind) => {
     document.querySelector(`.createNewPlaylist-${ind}`).style.display = "block";
     document.getElementById(`create-new-playlist-form-${ind}`).classList.remove("create-new-playlist-form-show");
 }
+
+const myPlaylistUser = (ind) => {
+    let playlistTitle = `title-${ind}-${ind}`;
+    let playlist = `playlist-item-${ind}-${ind}`;
+    document.getElementById(playlist).classList.toggle("toggle-display");
+    document.getElementById(playlistTitle).classList.toggle("playlist-title-active");
+}

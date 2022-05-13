@@ -494,6 +494,56 @@ h3.each-movie-title {
     font-family: monospace;
 }
 
+
+/* all users page */
+.view-profile-btn {
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5e5df0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    /* line-height: 24px; */
+    opacity: 1;
+    outline: 0 solid transparent;
+    /* padding: 8px 18px; */
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    width: 90%;
+    display: block;
+    text-align: center;
+    margin: 0.5em auto;
+    cursor: pointer;
+    padding: 0.3em;
+}
+
+.view-profile-btn:hover {
+    color: white;
+}
+
+/* single user page */
+.user-page-right-side {
+    width: 65%;
+}
+
+.private-public-heading {
+    background: -webkit-linear-gradient(45deg, #c73461, #f83730, #fc924c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    font-weight: 600;
+    /* text-align: center; */
+    font-size: 1.5em;
+}
+
 /* responsiveness */
 @media(max-width:1441px) {
     .movie-container {

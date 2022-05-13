@@ -14,8 +14,8 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const MongoDBStore = require('connect-mongo')(session);
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/moviesapp';
-// 
-mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+
+mongoose.connect('mongodb://localhost:27017/moviesapp', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("DB connected!!");
     })
@@ -42,7 +42,6 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -84,8 +83,6 @@ app.post('/signup', async (req, res) => {
         const { username, fullname, password, email } = req.body;
         const images = ["https://res.cloudinary.com/ankitcloudinary/image/upload/v1647787217/lights%20out/avatar2_xk8ikz.webp", "https://res.cloudinary.com/ankitcloudinary/image/upload/v1647787217/lights%20out/avatar_unmgy1.webp", "https://res.cloudinary.com/ankitcloudinary/image/upload/v1647787217/lights%20out/avatar3_stqbsw.webp", "https://res.cloudinary.com/ankitcloudinary/image/upload/v1647787217/lights%20out/avatar1_axkkg5.webp", "https://res.cloudinary.com/ankitcloudinary/image/upload/v1647787217/lights%20out/avatar4_dkrgtc.webp"]
 
-        // console.log(username, fullname, password, email, images[0]);
-
         const user = new User({
             email,
             username,
@@ -95,7 +92,6 @@ app.post('/signup', async (req, res) => {
         })
 
         const registeredUser = await User.register(user, password);
-        // console.log(registeredUser);
         req.login(registeredUser, (err) => {
             if (err) {
                 req.flash('error', "You must be signed.");
@@ -105,7 +101,6 @@ app.post('/signup', async (req, res) => {
         req.flash('success', `Congratulations ${fullname}, your account has been successfully created`);
         return res.redirect('/');
     } catch (e) {
-        // console.log("Error", e);
         req.flash('error', e.message);
         return res.redirect('/signup');
     }
@@ -146,34 +141,65 @@ app.get('/search', async (req, res) => {
 
 
 app.post('/:id/create-playlist', async (req, res) => {
-    const { playlist, status, title } = req.body;
-    const newPlaylist = {
-        name: playlist,
-        status,
-        movies: [{ movieTitle: title }]
-    }
+    try {
+        const { playlist, status, title } = req.body;
+        const newPlaylist = {
+            name: playlist,
+            status,
+            movies: [{ movieTitle: title }]
+        }
 
-    const user = await User.findById(req.params.id);
-    user.playlists.push(newPlaylist);
-    const savedUser = await user.save();
-    req.flash('success', `${playlist} playlist has been created.`);
-    res.redirect('/');
+        const user = await User.findById(req.params.id);
+        user.playlists.push(newPlaylist);
+        const savedUser = await user.save();
+        req.flash('success', `${playlist} playlist has been created.`);
+        res.redirect('/');
+    }
+    catch (e) {
+        req.flash('error', "The user you sending data to is not found.")
+        return res.redirect('/');
+    }
 })
 
 app.post('/:id/add-to-playlist', async (req, res) => {
-    const { playlist, title } = req.body;
-    let playlistName = "";
-    const user = await User.findById(req.params.id);
-    for (let i = 0; i < user.playlists.length; i++) {
-        if (user.playlists[i]._id == playlist) {
-            playlistName = user.playlists[i].name;
-            console.log("Entered!!!");
-            user.playlists[i].movies.push({ movieTitle: title });
+    try {
+        const { playlist, title } = req.body;
+        let playlistName = "";
+        const user = await User.findById(req.params.id);
+        for (let i = 0; i < user.playlists.length; i++) {
+            if (user.playlists[i]._id == playlist) {
+                playlistName = user.playlists[i].name;
+                console.log("Entered!!!");
+                user.playlists[i].movies.push({ movieTitle: title });
+            }
         }
+        const savedUser = await user.save();
+        req.flash('success', `Movie has been successfully added to ${playlistName} playlist.`);
+        res.redirect('/');
     }
-    const savedUser = await user.save();
-    req.flash('success', `Movie has been successfully added to ${playlistName} playlist.`);
-    res.redirect('/');
+    catch (e) {
+        req.flash('error', "The user you sending data to is not found.")
+        return res.redirect('/');
+    }
+})
+
+app.get('/users', async (req, res) => {
+    const users = await User.find();
+    // console.log(users);
+
+    res.render("users", { movies: [], users });
+})
+
+app.get('/users/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        // console.log(user);
+
+        return res.render("user", { user });
+    } catch (e) {
+        req.flash('error', "The user you searched for is not found.")
+        return res.redirect('/');
+    }
 })
 
 // error handling route

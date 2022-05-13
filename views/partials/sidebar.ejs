@@ -6,7 +6,7 @@
             <i class="fa-solid fa-house"></i> Home
         </a>
 
-        <a href="#" class="sidebar-attributes">
+        <a href="/users" class="sidebar-attributes">
             <i class="fa-solid fa-users"></i> All Users
         </a>
         <% if(!currUser) { %>
@@ -17,7 +17,7 @@
                 <i class="fa-solid fa-user-plus"></i> Signup
             </a>
             <% }else { %>
-                <a href="#" class="sidebar-attributes">
+                <a href="/users/<%= currUser._id %>" class="sidebar-attributes">
                     <i class="fa-solid fa-user"></i>
                     <%= currUser.fullname %>'s Account
                 </a>
