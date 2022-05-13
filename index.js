@@ -130,10 +130,9 @@ app.get('/search', async (req, res) => {
             return res.redirect('/');
         }
         const data = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${query}`);
-        // console.log(data.data.Search);
-        // console.log(data);
+
         if (data.data.Response === 'False') {
-            // console.log();
+
             req.flash("error", data.data.Error);
             return res.redirect('/');
         } else {
